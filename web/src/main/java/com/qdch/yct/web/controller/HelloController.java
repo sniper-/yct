@@ -29,11 +29,7 @@ public class HelloController {
 
     @PostMapping(value = "/login")
     @ResponseBody
-    public ResponseEntity<Object> login(){
-        System.out.println("test in");
-        return new ResponseEntity<>("Product is created successfully", HttpStatus.OK);
-
-
+    public Result login(@RequestBody User requestUser){
         // 对 html 标签进行转义，防止 XSS 攻击
 //        String username = requestUser.getUsername();
 //        username = HtmlUtils.htmlEscape(username);
@@ -43,8 +39,8 @@ public class HelloController {
 //            System.out.println("failed");
 //            return new Result(400);
 //        } else {
-//            System.out.println("success");
-//            return new Result(200);
+            System.out.println("success");
+            return new Result(200);
 //        }
     }
 
@@ -55,6 +51,8 @@ public class HelloController {
         System.out.println("logout success");
         return new ResponseEntity<>("Product is created successfully", HttpStatus.OK);
     }
+
+
     @RequestMapping(method = {RequestMethod.POST,
             RequestMethod.GET},produces = {"application/json;charset=UTF-8"})
     public String doPost(@RequestBody String body){
