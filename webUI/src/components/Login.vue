@@ -1,6 +1,6 @@
 <template>
   <div>
-    用户名:<input type="text" v-model="loginForm.username" placeholder="请输入用户名"/>
+    用户名:<input type="text" v-model="loginForm.userName" placeholder="请输入用户名"/>
     <br><br>
     密码： <input type="password" v-model="loginForm.password" placeholder="请输入密码"/>
     <br><br>
@@ -14,7 +14,7 @@
     data() {
       return {
         loginForm: {
-          username: '',
+          userName: '',
           password: ''
           },
         responseResult: []
@@ -24,7 +24,7 @@
       login() {
         this.$axios
           .post('/login', {
-            username: this.loginForm.username,
+            userName: this.loginForm.userName,
             password: this.loginForm.password
           })
           .then(successResponse => {
