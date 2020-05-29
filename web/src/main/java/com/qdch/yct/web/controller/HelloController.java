@@ -3,7 +3,8 @@ package com.qdch.yct.web.controller;
 import com.qdch.yct.web.entity.User;
 import com.qdch.yct.web.mapper.UserMapper;
 import com.qdch.yct.web.pojo.Result;
-import com.qdch.yct.web.utils.HttpUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,6 +26,8 @@ public class HelloController {
     HttpUtil httpUtil;
     @Autowired
     UserMapper userMapper;
+
+    private Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @RequestMapping(value = "/api/login")
     @CrossOrigin
@@ -55,9 +58,10 @@ public class HelloController {
         return new ResponseEntity<>("Product is created successfully", HttpStatus.OK);
     }
 
-    @RequestMapping(method = {RequestMethod.POST,
-            RequestMethod.GET},produces = {"application/json;charset=UTF-8"})
+    @RequestMapping(value="/api/hello",produces = {"application/json;charset=UTF-8"},method={RequestMethod.POST})
     public String doPost(@RequestBody String body){
+//        CommonUtil.writeLog(logger, "市场账户请求内容", body);
+        System.out.println("请求内容："+body);
         return "{\"markId\":\"054\",\"bankProId\":\"B005\"}";
     }
 
